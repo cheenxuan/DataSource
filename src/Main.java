@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 import queue.Queue;
@@ -8,13 +9,13 @@ import tree.bst.BST;
 public class Main {
 
     //测试使用q运行opCount个enqueue和dequeue操作所需要的时间 单位：秒
-    private static double testQueue(Queue<Integer> q,int opCount){
+    private static double testQueue(Queue<Integer> q, int opCount) {
 
         long startTime = System.nanoTime();
 
         Random random = new Random();
         //doString
-        for (int i = 0; i < opCount ; i++) {
+        for (int i = 0; i < opCount; i++) {
             q.enqueue(random.nextInt(Integer.MAX_VALUE));
         }
 
@@ -28,13 +29,13 @@ public class Main {
     }
 
     //测试使用q运行opCount个enqueue和dequeue操作所需要的时间 单位：秒
-    private static double testStack(Stack<Integer> q, int opCount){
+    private static double testStack(Stack<Integer> q, int opCount) {
 
         long startTime = System.nanoTime();
 
         Random random = new Random();
         //doString
-        for (int i = 0; i < opCount ; i++) {
+        for (int i = 0; i < opCount; i++) {
             q.push(random.nextInt(Integer.MAX_VALUE));
         }
 
@@ -60,17 +61,47 @@ public class Main {
         // System.out.println("ArrayStack: time: " + time2 + " s");
 
 
+        // BST<Integer> bst = new BST<Integer>();
+        // int[] nums = {5,3,6,8,4,2};
+        // for (int num : nums) {
+        //     bst.addElement(num);
+        // }
+        //
+        // bst.preOrder();
+        //
+        // bst.preOrderNR();
+        //
+        // bst.levelOrder();
+
         BST<Integer> bst = new BST<Integer>();
-        int[] nums = {5,3,6,8,4,2};
-        for (int num : nums) {
-            bst.addElement(num);
+        Random random = new Random();
+
+        int n = 10;
+
+        for (int i = 0; i < n; i++) {
+            bst.addElement(n + i);
         }
+        ArrayList<Integer> nums = new ArrayList<Integer>();
+        while (!bst.isEmpty()) {
+            bst.removeElement(15);
+            nums.add(bst.removeMin());
+        }
+        System.out.println(nums);
 
-        bst.preOrder();
 
-        bst.preOrderNR();
 
-        bst.levelOrder();
+        // ArrayList<Integer> nums = new ArrayList<Integer>();
+        // while (!bst.isEmpty()) {
+        //     nums.add(bst.removeMin());
+        // }
+        //
+        // System.out.println(nums);
+        //
+        // for (int i = 1; i < nums.size(); i++) {
+        //     if (nums.get(i - 1) > nums.get(i))
+        //         throw new IllegalArgumentException("Error");
+        // }
+        // System.out.println("removeMin test completed!");
 
     }
 }
