@@ -1,9 +1,7 @@
-import java.util.ArrayList;
 import java.util.Random;
 
 import queue.Queue;
 import stack.Stack;
-import tree.bst.BST;
 
 
 public class Main {
@@ -73,21 +71,20 @@ public class Main {
         //
         // bst.levelOrder();
 
-        BST<Integer> bst = new BST<Integer>();
-        Random random = new Random();
-
-        int n = 10;
-
-        for (int i = 0; i < n; i++) {
-            bst.addElement(n + i);
-        }
-        ArrayList<Integer> nums = new ArrayList<Integer>();
-        while (!bst.isEmpty()) {
-            bst.removeElement(15);
-            nums.add(bst.removeMin());
-        }
-        System.out.println(nums);
-
+        // BST<Integer> bst = new BST<Integer>();
+        // Random random = new Random();
+        //
+        // int n = 10;
+        //
+        // for (int i = 0; i < n; i++) {
+        //     bst.addElement(n + i);
+        // }
+        // ArrayList<Integer> nums = new ArrayList<Integer>();
+        // while (!bst.isEmpty()) {
+        //     bst.removeElement(15);
+        //     nums.add(bst.removeMin());
+        // }
+        // System.out.println(nums);
 
 
         // ArrayList<Integer> nums = new ArrayList<Integer>();
@@ -103,5 +100,31 @@ public class Main {
         // }
         // System.out.println("removeMin test completed!");
 
+
+        System.out.println(sumValue(10,20) + "");
+
+    }
+
+    public static int i = 1;
+
+    public static int sumValue(int n,int m) {
+        int a1 = 1;
+        int a2 = 1;
+
+        if(n <= m){
+            return sum(a1, a2, n);
+        }else{
+            throw new IllegalArgumentException("n is IllegalNumber");
+        }
+
+    }
+
+    private static int sum(int a1, int a2, int k) {
+        if (i < k - 2) {
+            i++;
+            return sum(a2, a1 + a2, k);
+        } else {
+            return a1 + a2;
+        }
     }
 }
